@@ -1,13 +1,21 @@
 pragma solidity ^0.5.0;
 
 contract SimpleStorage {
-    uint public data = 0;
+    uint[] public ids;
     
-    function set(uint _data) public {
-        data = _data;
+    function add(uint id) public {
+        ids.push(id);
     }
     
-    function get() view public returns(uint) {
-        return data;
+    function get(uint position) view public returns(uint) {
+        return ids[position];
+    }
+    
+    function getAll() view public returns(uint[] memory) {
+        return ids;
+    }
+    
+    function length() view public returns(uint) {
+        return ids.length;
     }
 }
